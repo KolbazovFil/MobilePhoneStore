@@ -1,0 +1,46 @@
+﻿<Page x:Class="MobilePhoneStore.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MobilePhoneStore.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Авторизация">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Авторизация" Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+        <TextBlock Text="Логин" Grid.Row="1" Grid.Column="0" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+        <TextBox Name="LoginTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+
+        <TextBlock Text="Пароль" Grid.Row="2" Grid.Column="0" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+        <PasswordBox Name="PasswordBox" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
+
+        <Button Name="RegButton" Content="Регистрация" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="RegButton_Click"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Name="EnterCaptcha" Text="Введите капчу:" Visibility="Collapsed" FontSize="25"/>
+            <TextBlock Name="CaptchaLabel" x:FieldModifier="public" FontSize="25" Grid.Row="3" Grid.Column="0" TextDecorations="Strikethrough,Underline" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Collapsed"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBox Name="CaptchaTextBox" x:FieldModifier="public" Height="40" Width="266" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" VerticalContentAlignment="Center" Visibility="Collapsed"/>
+            <Button Name="EnterButton" Content="Вход" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Margin="0,10" Click="EnterButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
