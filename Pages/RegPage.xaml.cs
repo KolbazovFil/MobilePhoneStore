@@ -31,27 +31,28 @@ namespace MobilePhoneStore.Pages
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            Registration(FIOTextBox.Text, LoginTextBox.Text, PasswordBox.Password, ConfirmPasswordBox.Password);
+            Registration(FIOTextBox.Text, LoginTextBox.Text, PasswordBox.Password, ConfirmPasswordBox.Password, EmailTextBox.Text, PhoneNomberTextBox.Text);
         }
 
-        public bool Registration(string fio, string login, string password, string confirmPassword)
+        public bool Registration(string fio, string login, string password, string confirmPassword, string email, string phone)
         {
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password)
                 || string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(fio)) errors.AppendLine("Все поля должны быть заполнены");
 
             if (login.Contains(" ")) errors.AppendLine("Поле для логина не должно содержать пробелы");
-
             if (confirmPassword != password) errors.AppendLine("Пароли не совпадают");
 
-            if (!Regex.IsMatch(password, @"^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]{6,}$"))
-                errors.AppendLine("Пароль должен содержать только хотя бы 6 символов, одну цифру и латинскую раскладку");
-
+            if (!Regex.IsMatch(password, @"^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]{6,}$")) errors.AppendLine("Пароль должен содержать только хотя бы 6 символов, одну цифру и латинскую раскладку");
+            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")) errors.AppendLine("Неверный формат электронной почты");
+            
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
+
+
 
             using (var db = new Entities())
             {
@@ -67,7 +68,10 @@ namespace MobilePhoneStore.Pages
                 {
                     FullName = fio,
                     Login = login,
-                    Password = password
+                    Password = password,
+                    Email = email,
+                    Phone = phone,
+                    RoleID = 2
                 };
 
                 db.Users.Add(userObject);
@@ -85,6 +89,8 @@ namespace MobilePhoneStore.Pages
             LoginTextBox.Clear();
             PasswordBox.Clear();
             ConfirmPasswordBox.Clear();
+            EmailTextBox.Clear();
+            PhoneNomberTextBox.Clear();
         }
 
     }

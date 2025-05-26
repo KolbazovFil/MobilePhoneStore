@@ -115,7 +115,7 @@ namespace MobilePhoneStore.Pages
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService != null) NavigationService.Navigate(new RegPage());
+            if (NavigationService != null) NavigationService.Navigate(new RegForAdminPage());
             LoginTextBox.Clear();
             PasswordBox.Clear();
         }

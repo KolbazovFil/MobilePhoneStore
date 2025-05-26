@@ -79,6 +79,9 @@
     <Compile Include="Orders.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegForAdminPage.xaml.cs">
+      <DependentUpon>RegForAdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegForAdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
