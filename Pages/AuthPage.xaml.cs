@@ -19,9 +19,6 @@ namespace MobilePhoneStore.Pages
 {
     public partial class AuthPage : Page
     {
-        private int loginAttempts = 0;
-        private string captchaText;
-
         public AuthPage()
         {
             InitializeComponent();
@@ -30,6 +27,7 @@ namespace MobilePhoneStore.Pages
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             Auth(LoginTextBox.Text, PasswordBox.Password);
+            Clear();
         }
 
         public bool Auth(string login, string password)
@@ -51,74 +49,47 @@ namespace MobilePhoneStore.Pages
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь с таким логином не существует!");
-                    loginAttempts++;
-                    CheckForCaptcha();
                     return false;
                 }
 
                 if (password!=PasswordBox.Password)
                 {
                     MessageBox.Show("Неверный пароль!");
-                    loginAttempts++;
-                    CheckForCaptcha();
                     return false;
                 }
 
-                if (loginAttempts >= 3)
+                if (NavigationService != null)
                 {
-                    if (CaptchaTextBox.Text != captchaText)
+                    if (user.RoleID == 1)
                     {
-                        MessageBox.Show("Неверная капча!");
-                        loginAttempts++;
-                        return false;
+                        NavigationService.Navigate(new MainPageForAdmin());
+                    }
+                    else
+                    {
+                        NavigationService.Navigate(new MainPage());
                     }
                 }
-
-                loginAttempts = 0;
-                HideCaptcha();
-
-                if (NavigationService != null) NavigationService.Navigate(new AddProductPage(null));
-
-                LoginTextBox.Clear();
-                PasswordBox.Clear();
-                CaptchaTextBox.Clear();
+                Clear();
                 return true;
             }
         }
 
-        public void CheckForCaptcha()
-        {
-            if (loginAttempts >= 3)
-            {
-                GenerateCaptcha();
-                CaptchaLabel.Visibility = Visibility.Visible;
-                CaptchaTextBox.Visibility = Visibility.Visible;
-                EnterCaptcha.Visibility = Visibility.Visible;
-            }
-        }
-
-        public void GenerateCaptcha()
-        {
-            Random random = new Random();
-            captchaText = new string(Enumerable.Range(0, 5).Select(x => (char)random.Next('A', 'Z' + 1)).ToArray());
-
-            CaptchaLabel.Text = captchaText;
-        }
-
-        public void HideCaptcha()
-        {
-            EnterCaptcha.Visibility = Visibility.Collapsed;
-            CaptchaLabel.Visibility = Visibility.Collapsed;
-            CaptchaTextBox.Visibility = Visibility.Collapsed;
-            CaptchaTextBox.Clear();
-        }
-
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService != null) NavigationService.Navigate(new RegForAdminPage());
+            if (NavigationService != null) NavigationService.Navigate(new RegPage());
+            Clear();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+            Clear();
+        }
+
+        private void Clear()
+        {
             LoginTextBox.Clear();
             PasswordBox.Clear();
         }
-
     }
 }

@@ -10,9 +10,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="410*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -21,66 +20,115 @@
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomMenu}">
-            <MenuItem Header="Навигация" Name="NavigationMenu" Style="{StaticResource CustomMenuItem}">
-                <MenuItem Header="Регистрация" Name="Registration" Style="{StaticResource CustomMenuItem}"/>
-                <MenuItem Header="Управление пользователями" Name="UserManage" Style="{StaticResource CustomMenuItem}"/>
-                <MenuItem Header="Редактирование профиля" Name="EditProfile" Style="{StaticResource CustomMenuItem}"/>
-            </MenuItem>
-            <MenuItem Header="Настройки" Name="SettingsMenu" Style="{StaticResource CustomMenuItem}">
-                <MenuItem Header="Тема" Name="ThemeMenu" Style="{StaticResource CustomMenuItem}">
-                    <MenuItem Header="Тёмная" Name="DarkThemeMenu" Style="{StaticResource CustomMenuItem}"/>
-                    <MenuItem Header="Светлая" Name="WtiteThemeMenu" Style="{StaticResource CustomMenuItem}"/>
-                </MenuItem>
-                <Separator/>
-                <MenuItem Header="Фоновый рисунок" Name="BackgroungThemeMenu" Style="{StaticResource CustomMenuItem}">
-                    <MenuItem Header="Рисунок 1" Name="Pic1ThemeMenu" Style="{StaticResource CustomMenuItem}"/>
-                    <MenuItem Header="Рисунок 2" Name="Pic2ThemeMenu" Style="{StaticResource CustomMenuItem}"/>
-                </MenuItem>
+            
+            <MenuItem Header="Навигация" Name="NavigationMenu" Style="{StaticResource CustomMenuItem}" Height="40">
+                <MenuItem Header="Регистрация" Name="Registration" Style="{StaticResource CustomMenuItem}" Click="Registration_Click"/>
             </MenuItem>
 
-            <MenuItem Header="EXIT" Name="ExitMenu" Style="{StaticResource CustomMenuItem}">
-                <MenuItem Style="{StaticResource CustomMenuItem}">
-                    <MenuItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Ellipse Height="10" Width="10" Fill="Black" Margin="0 0 5 0" />
-                            <TextBlock>Выход</TextBlock>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
+            <MenuItem Header="Продукция" Name="Products" Style="{StaticResource CustomMenuItem}" Height="40">
 
-                <MenuItem Header="Edit" Style="{StaticResource CustomMenuItem}">
+                <MenuItem Header="Вся продукция" Name="AllProducts" Style="{StaticResource CustomMenuItem}" Click="ProductAll_Click">
                     <MenuItem.Icon>
-                        <Image Source="../icons8-йода-67.ico"></Image>
+                        <Image Source="/Resurces/icons8-йода-67.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Apple" Name="Apple" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Apple">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/Apple.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Samsung" Name="Samsung" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Samsung">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/samsung_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Xiaomi" Name="Xiaomi" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Xiaomi">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/xiaomi_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Sony" Name="Sony" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Sony">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/sony_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Asus" Name="Asus" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Asus">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/asus_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="HP" Name="HP" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="HP">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/hp_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Honor" Name="Honor" Style="{StaticResource CustomMenuItem}" Click="ProductFilter_Click" Tag="Honor">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/honor_logo.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                
+            </MenuItem>
+
+            <MenuItem Header="Категории" Name="Categories" Style="{StaticResource CustomMenuItem}" Height="40">
+
+                <MenuItem Header="Все категории" Name="AllCategories" Style="{StaticResource CustomMenuItem}" Click="ProductAll_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/icons8-йода-67.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Мобильные телефоны" Name="Mobile" Style="{StaticResource CustomMenuItem}" Click="CategoryFilter_Click" Tag="Мобильные телефоны">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/phone.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Планшеты" Name="Tablet" Style="{StaticResource CustomMenuItem}" Click="CategoryFilter_Click" Tag="Планшеты">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/tablet.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Цифровые плееры" Name="Player" Style="{StaticResource CustomMenuItem}" Click="CategoryFilter_Click" Tag="Цифровые плееры">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/playeer.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Ноутбуки" Name="Notebook" Style="{StaticResource CustomMenuItem}" Click="CategoryFilter_Click" Tag="Ноутбуки">
+                    <MenuItem.Icon>
+                        <Image Source="/Resurces/notebook.ico"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
 
             </MenuItem>
         </Menu>
 
-        <Button Content="Войти" Name="Authorization" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Width="70" Height="30" Style="{StaticResource CustomButtonStyle}" Click="Authorization_Click"/>
-
-
-
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="Войти" Name="Authorization" Width="80" Height="40" Visibility="Visible" Style="{StaticResource CustomButtonStyle}" Click="Authorization_Click"/>
+            <StackPanel Name="ProfilePanel" Orientation="Horizontal" Visibility="Collapsed">
+                <Image Source="/Resurces/user_profile.ico" Height="25" Width="25"/>
+                <TextBlock Text="Профиль" Foreground="#fff" Style="{StaticResource CustomTextBlock}"/>
+            </StackPanel>
+            <Button Content="Корзина" Name="ShopCart" Width="80" Height="40" Style="{StaticResource CustomButtonStyle}"/>
+        </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock Text="Фильтры" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Text="Категория товара" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
-            <ComboBox Name="CategoriesComboBox" Grid.Row="1" Grid.Column="0" SelectionChanged="CategoriesComboBox_SelectionChanged" Style="{StaticResource CustomComboBox}">
-                <ComboBoxItem Content="Все категории" Style="{StaticResource CustomComboBoxItem}"/>
-                <ComboBoxItem Content="Мобильные телефоны" Style="{StaticResource CustomComboBoxItem}"/>
-                <ComboBoxItem Content="Планшеты" Style="{StaticResource CustomComboBoxItem}"/>
-                <ComboBoxItem Content="MP3 Плееры" Style="{StaticResource CustomComboBoxItem}"/>
-                <ComboBoxItem Content="Ноутбуки" Style="{StaticResource CustomComboBoxItem}"/>
-            </ComboBox>
-
             <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
             <TextBox Name="MinPriceTextBox" Style="{StaticResource CustomTextBox}" Width="200" FontSize="16" Height="30"/>
             <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
             <TextBox Name="MaxPriceTextBox" Style="{StaticResource CustomTextBox}" Width="200" Height="30" FontSize="16"/>
             <Button Content="Применить фильтр" Style="{StaticResource CustomButtonStyle}" Width="190" Margin="0,10" Click="ApplyPriceFilterButton_Click"/>
         </StackPanel>
-
-
 
         <ListView Name="ListProducts" Grid.Row="1" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
@@ -96,6 +144,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="{Binding ProductName}" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
@@ -103,8 +152,10 @@
                         <TextBlock Text="Цена: " Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"/>
 
                         <TextBlock Text="{Binding Price}" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"/>
+                        
+                        <TextBlock Text=" руб." Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left"/>
 
-                        <Image Width="450" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+                        <Image Width="450" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.ColumnSpan="4">
                             <Image.Source>
                                 <Binding Path="Image">
                                     <Binding.TargetNullValue>
@@ -114,7 +165,7 @@
                             </Image.Source>
                         </Image>
 
-                        <Button Name="EditProductButton" Content="Редактировать" Click="EditProductButton_Click" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource CustomEditButtonStyle}"/>
+                        <Button Name="AddToShopCart" Content="Добавить в корзину" Click="AddToShopCartButton_Click" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CustomEditButtonStyle}"/>
 
                     </Grid>
                 </DataTemplate>
@@ -128,10 +179,6 @@
 
         </ListView>
 
-
-
-        <Button Name="AddProductButton" Content="Добавить" Grid.Row="2" Grid.ColumnSpan="2" Click="AddProductButton_Click" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" />
-        <Button Name="DeleteProductButton" Content="Удалить" Grid.Row="2" Grid.Column="1" Click="DeleteProductButton_Click" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" />
 
     </Grid>
 </Page>

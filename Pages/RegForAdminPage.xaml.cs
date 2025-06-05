@@ -1,59 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MobilePhoneStore.Pages
 {
     public partial class RegForAdminPage : Page
     {
+        private Users _currentUser = new Users();
+
         public RegForAdminPage()
         {
             InitializeComponent();
             RoleComboBox.ItemsSource = Entities.GetContext().Roles.ToList();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-            Clear();
+            DataContext = _currentUser;
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            Registration(FIOTextBox.Text, LoginTextBox.Text, PasswordBox.Password, ConfirmPasswordBox.Password, EmailTextBox.Text, PhoneNomberTextBox.Text, RoleComboBox.Text);
+            Registration(FIOTextBox.Text, LoginTextBox.Text, PasswordBox.Password, ConfirmPasswordBox.Password, EmailTextBox.Text, PhoneNomberTextBox.Text, _currentUser.RoleID);
         }
 
-        public bool Registration(string fio, string login, string password, string confirmPassword, string email, string phone, int roleID)
+        public bool Registration(string fio, string login, string password, string confirmPassword, string email, string phone, int roleId)
         {
             StringBuilder errors = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password)
-                || string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(fio)) errors.AppendLine("Все поля должны быть заполнены");
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(fio) || roleId == 0)
+                errors.AppendLine("Поля ФИО, логина, пароля и роли пользователя не должны быть пустыми");
 
             if (login.Contains(" ")) errors.AppendLine("Поле для логина не должно содержать пробелы");
+
             if (confirmPassword != password) errors.AppendLine("Пароли не совпадают");
 
-            if (!Regex.IsMatch(password, @"^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]{6,}$")) errors.AppendLine("Пароль должен содержать только хотя бы 6 символов, одну цифру и латинскую раскладку");
-            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$")) errors.AppendLine("Неверный формат электронной почты");
+            if (!Regex.IsMatch(password, @"^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$"))
+                errors.AppendLine("Пароль должен содержать минимум 6 символов, хотя бы одну цифру и только латинскую раскладку");
+
+            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                errors.AppendLine("Неверный формат электронной почты, пример: \"empty@business.com\"");
 
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-
-
 
             using (var db = new Entities())
             {
@@ -72,7 +63,7 @@ namespace MobilePhoneStore.Pages
                     Password = password,
                     Email = email,
                     Phone = phone,
-                    RoleID = roleID
+                    RoleID = roleId
                 };
 
                 db.Users.Add(userObject);
@@ -84,6 +75,12 @@ namespace MobilePhoneStore.Pages
             }
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+            Clear();
+        }
+
         private void Clear()
         {
             FIOTextBox.Clear();
@@ -92,8 +89,7 @@ namespace MobilePhoneStore.Pages
             ConfirmPasswordBox.Clear();
             EmailTextBox.Clear();
             PhoneNomberTextBox.Clear();
+            RoleComboBox.SelectedIndex = -1;
         }
-
-
     }
 }

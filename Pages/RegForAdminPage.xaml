@@ -42,7 +42,7 @@
         <PasswordBox Name="ConfirmPasswordBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
         <TextBox Name="EmailTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
         <TextBox Name="PhoneNomberTextBox" Grid.Row="6" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
-        <ComboBox Name="RoleComboBox" Grid.Row="7" Grid.Column="1" DisplayMemberPath="RoleName" SelectedValuePath = "RoleID" SelectedItem="{Binding Roles}" Style="{StaticResource CustomAddComboBox}"/>
+        <ComboBox Name="RoleComboBox" Grid.Row="7" Grid.Column="1" DisplayMemberPath="RoleName" SelectedValuePath="ID" SelectedValue="{Binding RoleID, Mode=TwoWay}" Style="{StaticResource CustomAddComboBox}"/>
 
         <Button Name="CancelButton" Content="Отмена" Grid.Row="8" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="10,0" Click="CancelButton_Click"/>
         <Button Name="RegistrationButton" Content="Регистрация" Grid.Row="8" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" Margin="10,0" Click="RegistrationButton_Click"/>

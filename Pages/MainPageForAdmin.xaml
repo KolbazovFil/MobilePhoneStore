@@ -1,0 +1,131 @@
+﻿<Page x:Class="MobilePhoneStore.Pages.MainPageForAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MobilePhoneStore.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Главная для администратора" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomMenu}">
+            <MenuItem Header="Навигация" Name="NavigationMenu" Style="{StaticResource CustomMenuItem}">
+                <MenuItem Header="Регистрация" Name="Registration" Style="{StaticResource CustomMenuItem}"/>
+                <MenuItem Header="Управление пользователями" Name="UserManage" Style="{StaticResource CustomMenuItem}"/>
+                <MenuItem Header="Редактирование профиля" Name="EditProfile" Style="{StaticResource CustomMenuItem}"/>
+            </MenuItem>
+            <MenuItem Header="Настройки" Name="SettingsMenu" Style="{StaticResource CustomMenuItem}">
+                <MenuItem Header="Тема" Name="ThemeMenu" Style="{StaticResource CustomMenuItem}">
+                    <MenuItem Header="Тёмная" Name="DarkThemeMenu" Style="{StaticResource CustomMenuItem}"/>
+                    <MenuItem Header="Светлая" Name="WtiteThemeMenu" Style="{StaticResource CustomMenuItem}"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Фоновый рисунок" Name="BackgroungThemeMenu" Style="{StaticResource CustomMenuItem}">
+                    <MenuItem Header="Рисунок 1" Name="Pic1ThemeMenu" Style="{StaticResource CustomMenuItem}"/>
+                    <MenuItem Header="Рисунок 2" Name="Pic2ThemeMenu" Style="{StaticResource CustomMenuItem}"/>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="EXIT" Name="ExitMenu" Style="{StaticResource CustomMenuItem}">
+                <MenuItem Style="{StaticResource CustomMenuItem}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="10" Width="10" Fill="Black" Margin="0 0 5 0" />
+                            <TextBlock>Выход</TextBlock>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
+                <MenuItem Header="Edit" Style="{StaticResource CustomMenuItem}">
+                    <MenuItem.Icon>
+                        <Image Source="../icons8-йода-67.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Button Content="Регистрация пользователя" Name="Authorization" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Height="30" Style="{StaticResource CustomButtonStyle}" Click="RegUser_Click"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Text="Фильтры" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
+            <TextBlock Text="Категория товара" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
+            <ComboBox Name="CategoriesComboBox" Grid.Row="1" Grid.Column="0" SelectionChanged="CategoriesComboBox_SelectionChanged" Style="{StaticResource CustomComboBox}">
+                <ComboBoxItem Content="Все категории" Style="{StaticResource CustomComboBoxItem}"/>
+                <ComboBoxItem Content="Мобильные телефоны" Style="{StaticResource CustomComboBoxItem}"/>
+                <ComboBoxItem Content="Планшеты" Style="{StaticResource CustomComboBoxItem}"/>
+                <ComboBoxItem Content="MP3 Плееры" Style="{StaticResource CustomComboBoxItem}"/>
+                <ComboBoxItem Content="Ноутбуки" Style="{StaticResource CustomComboBoxItem}"/>
+            </ComboBox>
+
+            <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
+            <TextBox Name="MinPriceTextBox" Style="{StaticResource CustomTextBox}" Width="200" FontSize="16" Height="30"/>
+            <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
+            <TextBox Name="MaxPriceTextBox" Style="{StaticResource CustomTextBox}" Width="200" Height="30" FontSize="16"/>
+            <Button Content="Применить фильтр" Style="{StaticResource CustomButtonStyle}" Width="190" Margin="0,10" Click="ApplyPriceFilterButton_Click"/>
+        </StackPanel>
+
+
+
+        <ListView Name="ListProducts" Grid.Row="1" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="450"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding ProductName}" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="Цена: " Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right"/>
+
+                        <TextBlock Text="{Binding Price}" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"/>
+
+                        <Image Width="450" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+                            <Image.Source>
+                                <Binding Path="Image">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/Resurces/plug.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+
+                        <Button Name="EditProductButton" Content="Редактировать" Click="EditProductButton_Click" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource CustomEditButtonStyle}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+        </ListView>
+
+        <Button Name="AddProductButton" Content="Добавить" Grid.Row="2" Grid.ColumnSpan="2" Click="AddProductButton_Click" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" />
+        <Button Name="DeleteProductButton" Content="Удалить" Grid.Row="2" Grid.Column="1" Click="DeleteProductButton_Click" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" />
+
+    </Grid>
+</Page>

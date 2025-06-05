@@ -19,7 +19,6 @@ namespace MobilePhoneStore
             : base("name=Entities")
         {
         }
-
         private static Entities _context;
 
         public static Entities GetContext()
@@ -27,7 +26,6 @@ namespace MobilePhoneStore
             if (_context == null) _context = new Entities();
             return _context;
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -37,7 +35,6 @@ namespace MobilePhoneStore
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -71,13 +71,26 @@
     <Compile Include="Categories.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Orders.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPageForAdmin.xaml.cs">
+      <DependentUpon>MainPageForAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegForAdminPage.xaml.cs">
       <DependentUpon>RegForAdminPage.xaml</DependentUpon>
@@ -86,9 +99,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
@@ -130,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MainPageForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RegForAdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,16 +154,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AddProductPage.xaml.cs">
       <DependentUpon>AddProductPage.xaml</DependentUpon>
     </Compile>
@@ -216,6 +220,18 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Resurces\script.sql" />
+    <Resource Include="Resurces\user_profile.ico" />
+    <Resource Include="Resurces\playeer.ico" />
+    <Resource Include="Resurces\notebook.ico" />
+    <Resource Include="Resurces\phone.ico" />
+    <Resource Include="Resurces\tablet.ico" />
+    <Resource Include="Resurces\honor_logo.ico" />
+    <Resource Include="Resurces\hp_logo.ico" />
+    <Resource Include="Resurces\asus_logo.ico" />
+    <Resource Include="Resurces\sony_logo.ico" />
+    <Resource Include="Resurces\xiaomi_logo.ico" />
+    <Resource Include="Resurces\samsung_logo.ico" />
+    <Resource Include="Resurces\Apple.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
