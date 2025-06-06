@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 
 namespace MobilePhoneStore.Pages
 {
+
     public partial class AuthPage : Page
     {
         public AuthPage()
@@ -26,8 +27,8 @@ namespace MobilePhoneStore.Pages
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            Auth(LoginTextBox.Text, PasswordBox.Password);
-            Clear();
+            if (Auth(LoginTextBox.Text, PasswordBox.Password))
+                Clear();
         }
 
         public bool Auth(string login, string password)
@@ -52,11 +53,14 @@ namespace MobilePhoneStore.Pages
                     return false;
                 }
 
-                if (password!=PasswordBox.Password)
+                if (password != PasswordBox.Password)
                 {
                     MessageBox.Show("Неверный пароль!");
                     return false;
                 }
+
+                Session.IsAuthorized = true;
+                Session.CurrentUserLogin = user.Login;
 
                 if (NavigationService != null)
                 {
@@ -69,7 +73,6 @@ namespace MobilePhoneStore.Pages
                         NavigationService.Navigate(new MainPage());
                     }
                 }
-                Clear();
                 return true;
             }
         }
@@ -82,7 +85,8 @@ namespace MobilePhoneStore.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            if(NavigationService.CanGoBack) 
+                NavigationService.GoBack();
             Clear();
         }
 

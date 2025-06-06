@@ -5,6 +5,13 @@ using System.Windows.Controls;
 
 namespace MobilePhoneStore.Pages
 {
+
+    public static class Session // Класс хранения состояния сессии
+    {
+        public static bool IsAuthorized { get; set; } = false;
+        public static string CurrentUserLogin { get; set; } = null;
+    }
+
     public partial class MainPage : Page
     {
         private string currentBrand = null;
@@ -28,10 +35,23 @@ namespace MobilePhoneStore.Pages
         // Метод обновления страницы
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Visibility == Visibility.Visible)
             {
-                Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-                ApplyFilters();
+                if (Visibility == Visibility.Visible)
+                {
+                    Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                    ApplyFilters();
+
+                    // Проверяем состояние авторизации и обновляем UI
+                    if (Session.IsAuthorized)
+                    {
+                        LogInProfile();
+                    }
+                    else
+                    {
+                        Authorization.Visibility = Visibility.Visible;
+                        ProfilePanel.Visibility = Visibility.Collapsed;
+                    }
+                }
             }
         }
 
@@ -97,7 +117,7 @@ namespace MobilePhoneStore.Pages
             ApplyFilters();
         }
 
-        // Обработчик клика по элементу меню (DВсе)
+        // Обработчик клика по элементу меню (Все)
         private void ProductAll_Click(object sender, RoutedEventArgs e)
         {
             currentBrand = null;
@@ -115,7 +135,6 @@ namespace MobilePhoneStore.Pages
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService != null) NavigationService.Navigate(new AuthPage());
-            LogInProfile();
         }
 
         // Переход на страницу регистрации
@@ -129,12 +148,41 @@ namespace MobilePhoneStore.Pages
 
         }
 
+        // Обработчик входа в профиль
         private void LogInProfile()
         {
             Authorization.Visibility = Visibility.Collapsed;
             ProfilePanel.Visibility = Visibility.Visible;
         }
 
+        // Обработчик выхода из профиля
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Session.IsAuthorized = false;
+            Session.CurrentUserLogin = null;
 
+            Authorization.Visibility = Visibility.Visible;
+            ProfilePanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void ProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Session.IsAuthorized || string.IsNullOrEmpty(Session.CurrentUserLogin))
+            {
+                MessageBox.Show("Вы не авторизованы", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var currentUser = Entities.GetContext().Users.FirstOrDefault(u => u.Login == Session.CurrentUserLogin);
+
+            if (currentUser == null)
+            {
+                MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (NavigationService != null)
+                NavigationService.Navigate(new ProfilePage(currentUser));
+        }
     }
 }

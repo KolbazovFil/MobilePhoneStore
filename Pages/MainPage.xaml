@@ -114,11 +114,17 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
             <Button Content="Войти" Name="Authorization" Width="80" Height="40" Visibility="Visible" Style="{StaticResource CustomButtonStyle}" Click="Authorization_Click"/>
+            
             <StackPanel Name="ProfilePanel" Orientation="Horizontal" Visibility="Collapsed">
-                <Image Source="/Resurces/user_profile.ico" Height="25" Width="25"/>
-                <TextBlock Text="Профиль" Foreground="#fff" Style="{StaticResource CustomTextBlock}"/>
+                <Button Name="ProfileButton" Width="130" Height="40" Style="{StaticResource CustomButtonStyle}" Click="ProfileButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resurces/user_profile.ico" Height="25" Width="25"/>
+                        <TextBlock Text="Профиль" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <Button Content="Корзина" Name="ShopCart" Width="80" Height="40" Style="{StaticResource CustomButtonStyle}"/>
+            
+            <Button Content="Корзина" Name="ShopCart" Width="90" Height="40" Style="{StaticResource CustomButtonStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
