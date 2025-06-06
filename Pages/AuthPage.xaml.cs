@@ -27,8 +27,7 @@ namespace MobilePhoneStore.Pages
 
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Auth(LoginTextBox.Text, PasswordBox.Password))
-                Clear();
+            if (Auth(LoginTextBox.Text, PasswordBox.Password)) Clear();
         }
 
         public bool Auth(string login, string password)
@@ -85,8 +84,7 @@ namespace MobilePhoneStore.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            if(NavigationService.CanGoBack) 
-                NavigationService.GoBack();
+            if(NavigationService.CanGoBack) NavigationService.GoBack();
             Clear();
         }
 

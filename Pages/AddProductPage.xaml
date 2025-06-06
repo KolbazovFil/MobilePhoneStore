@@ -36,7 +36,7 @@
         <TextBox Name="PhotoTextBox" Style="{StaticResource CustomTextBox}" Text="{Binding Image}" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>
 
 
-        <Button Name="SaveButton" Grid.Row="6" Content="Сохранить" Click="SaveButton_Click" Style="{StaticResource CustomButtonStyle}" />
-        <Button Name="CancelButton" Grid.Row="6" Grid.Column="1" Content="Отменить" Click="CancelButton_Click" Style="{StaticResource CustomButtonStyle}" />
+        <Button Name="SaveButton" ToolTip="Нажмите чтобы сохранить" Grid.Row="6" Content="Сохранить" Click="SaveButton_Click" Style="{StaticResource CustomButtonStyle}" />
+        <Button Name="CancelButton" ToolTip="Нажмите чтобы отменить" Grid.Row="6" Grid.Column="1" Content="Отменить" Click="CancelButton_Click" Style="{StaticResource CustomButtonStyle}" />
     </Grid>
 </Page>

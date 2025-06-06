@@ -27,16 +27,16 @@
         <TextBlock Text="Авторизация пользователя" Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
 
         <TextBlock Text="Логин" Grid.Row="1" Grid.Column="0" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-        <TextBox Name="LoginTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+        <TextBox Name="LoginTextBox" ToolTip="Введите логин" Grid.Row="1" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
 
         <TextBlock Text="Пароль" Grid.Row="2" Grid.Column="0" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Right" Margin="0 0 5 0"/>
-        <PasswordBox Name="PasswordBox" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
+        <PasswordBox Name="PasswordBox" ToolTip="Введите пароль" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
 
-        <Button Name="RegButton" Content="Регистрация" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="RegButton_Click"/>
+        <Button Name="RegButton" ToolTip="Нажмите чтобы зарегистрироваться" Content="Регистрация" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="RegButton_Click"/>
 
-        <Button Name="EnterButton" Content="Вход" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="EnterButton_Click"/>
+        <Button Name="EnterButton" ToolTip="Нажмите чтобы войти" Content="Вход" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="EnterButton_Click"/>
 
-        <Button Name="CancelButton" Content="Отмена" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="CancelButton_Click"/>
+        <Button Name="CancelButton" ToolTip="Нажмите чтобы отменить" Content="Отмена" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top" Click="CancelButton_Click"/>
 
     </Grid>
 </Page>

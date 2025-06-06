@@ -56,8 +56,7 @@ namespace MobilePhoneStore.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            if (NavigationService.CanGoBack) NavigationService.GoBack();
         }
-
     }
 }

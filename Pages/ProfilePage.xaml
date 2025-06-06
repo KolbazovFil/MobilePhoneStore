@@ -37,10 +37,10 @@
         <TextBox Name="EmailTextBox" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomTextBox}" Text="{Binding Email}" IsReadOnly="True"/>
         <TextBox Name="PhoneNumberTextBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomTextBox}" Text="{Binding Phone}" IsReadOnly="True"/>
 
-        <Button Name="CancelButton" Content="Назад" Grid.Row="7" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="10,0" Click="CancelButton_Click"/>
-        <Button Name="EditButton" Content="Редактировать" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" Margin="10,0" Click="EditButton_Click" Visibility="Visible"/>
-        <Button Name="SaveButton" Content="Сохранить" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" Background="Green" HorizontalAlignment="Right" Margin="10,0" Click="SaveButton_Click" Visibility="Collapsed"/>
+        <Button Name="CancelButton" Content="Назад" ToolTip="Нашмите чтобы вернуться обратно" Grid.Row="7" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="10,0" Click="CancelButton_Click"/>
+        <Button Name="EditButton" Content="Редактировать" ToolTip="Нашмите для редактирования профиля" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" Margin="10,0" Click="EditButton_Click" Visibility="Visible"/>
+        <Button Name="SaveButton" Content="Сохранить" ToolTip="Нажмите для сохранения изменений в профиле" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" Background="Green" HorizontalAlignment="Right" Margin="10,0" Click="SaveButton_Click" Visibility="Collapsed"/>
 
-        <TextBlock Name="Exit" Text="Выйти из профиля" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Foreground="IndianRed" Cursor="Hand" MouseLeftButtonDown="Exit_MouseLeftButtonDown"/>
+        <TextBlock Name="Exit" Text="Выйти из профиля" ToolTip="Нажмите для выхода из профиля" Style="{StaticResource CustomTextBlock}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Foreground="IndianRed" Cursor="Hand" MouseLeftButtonDown="Exit_MouseLeftButtonDown"/>
     </Grid>
 </Page>

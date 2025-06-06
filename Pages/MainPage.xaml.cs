@@ -5,8 +5,8 @@ using System.Windows.Controls;
 
 namespace MobilePhoneStore.Pages
 {
-
-    public static class Session // Класс хранения состояния сессии
+    // Класс хранения состояния сессии
+    public static class Session 
     {
         public static bool IsAuthorized { get; set; } = false;
         public static string CurrentUserLogin { get; set; } = null;
@@ -41,10 +41,10 @@ namespace MobilePhoneStore.Pages
                     Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
                     ApplyFilters();
 
-                    // Проверяем состояние авторизации и обновляем UI
                     if (Session.IsAuthorized)
                     {
-                        LogInProfile();
+                        Authorization.Visibility = Visibility.Collapsed;
+                        ProfilePanel.Visibility = Visibility.Visible;
                     }
                     else
                     {
@@ -101,7 +101,7 @@ namespace MobilePhoneStore.Pages
             }
         }
 
-        // Обрабодчик кнопки "применить фильтр"
+        // Обрабодчик применения фильтрации
         private void ApplyPriceFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MinPriceTextBox.Text) && decimal.TryParse(MinPriceTextBox.Text, out decimal min))
@@ -131,38 +131,14 @@ namespace MobilePhoneStore.Pages
             LoadAllProducts();
         }
 
-        // Переход на страницу авторизации
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService != null) NavigationService.Navigate(new AuthPage());
         }
 
-        // Переход на страницу регистрации
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService != null) NavigationService.Navigate(new RegPage());
-        }
-
-        private void AddToShopCartButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        // Обработчик входа в профиль
-        private void LogInProfile()
-        {
-            Authorization.Visibility = Visibility.Collapsed;
-            ProfilePanel.Visibility = Visibility.Visible;
-        }
-
-        // Обработчик выхода из профиля
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            Session.IsAuthorized = false;
-            Session.CurrentUserLogin = null;
-
-            Authorization.Visibility = Visibility.Visible;
-            ProfilePanel.Visibility = Visibility.Collapsed;
         }
 
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
@@ -181,8 +157,12 @@ namespace MobilePhoneStore.Pages
                 return;
             }
 
-            if (NavigationService != null)
-                NavigationService.Navigate(new ProfilePage(currentUser));
+            if (NavigationService != null) NavigationService.Navigate(new ProfilePage(currentUser));
+        }
+
+        private void AddToShopCartButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

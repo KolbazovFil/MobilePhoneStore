@@ -34,15 +34,15 @@
         <TextBlock Text="Адрес электронной почты" Grid.Row="5" Grid.Column="0" Style="{StaticResource CustomTextBlock}" Width="300" HorizontalAlignment="Right"/>
         <TextBlock Text="Номер телефона" Grid.Row="6" Grid.Column="0" Style="{StaticResource CustomTextBlock}" Width="300" HorizontalAlignment="Right"/>
 
-        <TextBox Name="FIOTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
-        <TextBox Name="LoginTextBox" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
-        <PasswordBox Name="PasswordBox" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
-        <PasswordBox Name="ConfirmPasswordBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
-        <TextBox Name="EmailTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
-        <TextBox Name="PhoneNomberTextBox" Grid.Row="6" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+        <TextBox Name="FIOTextBox" ToolTip="Введите ФИО" Grid.Row="1" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+        <TextBox Name="LoginTextBox" ToolTip="Введите логин" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+        <PasswordBox Name="PasswordBox" ToolTip="Введите пароль" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
+        <PasswordBox Name="ConfirmPasswordBox" ToolTip="Подтвердите пароль" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomPasswordBox}"/>
+        <TextBox Name="EmailTextBox" Grid.Row="5" ToolTip="Введите электронную почту" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
+        <TextBox Name="PhoneNomberTextBox" ToolTip="Введите номер телефона" Grid.Row="6" Grid.Column="1" Style="{StaticResource CustomTextBox}"/>
 
-        <Button Name="CancelButton" Content="Отмена" Grid.Row="7" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="10,0" Click="CancelButton_Click"/>
-        <Button Name="RegistrationButton" Content="Регистрация" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" Margin="10,0" Click="RegistrationButton_Click"/>
+        <Button Name="CancelButton" Content="Отмена" ToolTip="Нажмите чтобы вернуться назад" Grid.Row="7" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="10,0" Click="CancelButton_Click"/>
+        <Button Name="RegistrationButton" Content="Регистрация" ToolTip="Нажмите чтобы зарегистрироваться" Grid.Row="7" Grid.Column="0" Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Right" Margin="10,0" Click="RegistrationButton_Click"/>
 
     </Grid>
 </Page>
