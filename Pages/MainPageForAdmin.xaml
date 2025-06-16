@@ -123,16 +123,14 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-
-            <Button Content="Корзина" ToolTip="Нажмите чтобы перейти в корзину" Name="ShopCart" Width="90" Height="40" Style="{StaticResource CustomButtonStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock Text="Фильтры" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
-            <TextBox Name="MinPriceTextBox" ToolTip="Введите минимальную цену для фильтрации" Style="{StaticResource CustomTextBox}" Width="200" FontSize="16" Height="30"/>
-            <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
-            <TextBox Name="MaxPriceTextBox" ToolTip="Введите максимальную цену для фильтрации" Style="{StaticResource CustomTextBox}" Width="200" Height="30" FontSize="16"/>
+            <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}"/>
+            <TextBox Name="MinPriceTextBox" ToolTip="Введите минимальную цену для фильтрации в формате 4000,00" Style="{StaticResource CustomTextBox}" Width="200" Height="30"/>
+            <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}"/>
+            <TextBox Name="MaxPriceTextBox" ToolTip="Введите максимальную цену для фильтрации в формате 4000,00" Style="{StaticResource CustomTextBox}" Width="200" Height="30"/>
             <Button Content="Применить фильтр" ToolTip="Нажмите для применения фильтрации" Style="{StaticResource CustomButtonStyle}" Width="190" Margin="0,10" Click="ApplyPriceFilterButton_Click"/>
         </StackPanel>
 

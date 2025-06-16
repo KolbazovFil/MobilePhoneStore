@@ -120,38 +120,4 @@
         <Setter Property="Width" Value="400"/>
     </Style>
 
-
-
-
-
-
-
-    <Style x:Key="CustomDatePickerStyle" TargetType="DatePicker">
-        <Setter Property="IsDropDownOpen" Value="False"/>
-        <Setter Property="SelectedDateFormat" Value="Short"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="Height" Value="25"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="DisplayDateStart" Value="01.01.2024"/>
-        <Setter Property="DisplayDateEnd" Value="12.31.2030"/>
-        <Setter Property="Grid.Column" Value="1"/>
-        <Setter Property="Margin" Value="5"/>
-    </Style>
-
-    <Style x:Key="CustomTextBlockWithButton" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="TextAlignment" Value="Center"/>
-    </Style>
-
 </ResourceDictionary>

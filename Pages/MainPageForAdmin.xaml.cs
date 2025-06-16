@@ -138,14 +138,22 @@ namespace MobilePhoneStore.Pages
         private void ApplyPriceFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MinPriceTextBox.Text) && decimal.TryParse(MinPriceTextBox.Text, out decimal min))
+            {
                 minPrice = min;
+            }
             else
+            {
                 minPrice = 0;
+            }
 
             if (!string.IsNullOrEmpty(MaxPriceTextBox.Text) && decimal.TryParse(MaxPriceTextBox.Text, out decimal max))
+            {
                 maxPrice = max;
+            }
             else
+            {
                 maxPrice = decimal.MaxValue;
+            }
 
             ApplyFilters();
         }

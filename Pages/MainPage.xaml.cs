@@ -62,11 +62,10 @@ namespace MobilePhoneStore.Pages
 
             if (!string.IsNullOrEmpty(currentBrand))
             {
-                products = currentBrand == "Xiaomi"
-                    ? products.Where(p => p.ProductName.Contains("Xiaomi") ||
-                                          p.ProductName.Contains("Poco") ||
-                                          p.ProductName.Contains("Redmi"))
-                    : products.Where(p => p.ProductName.Contains(currentBrand));
+                products = products.Where(p =>
+                    p.ProductName.Contains(currentBrand) ||
+                    (currentBrand == "Xiaomi" &&
+                     (p.ProductName.Contains("Poco") || p.ProductName.Contains("Redmi"))));
             }
 
             if (!string.IsNullOrEmpty(currentCategory))
@@ -105,14 +104,22 @@ namespace MobilePhoneStore.Pages
         private void ApplyPriceFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MinPriceTextBox.Text) && decimal.TryParse(MinPriceTextBox.Text, out decimal min))
+            {
                 minPrice = min;
+            }
             else
+            {
                 minPrice = 0;
+            }
 
             if (!string.IsNullOrEmpty(MaxPriceTextBox.Text) && decimal.TryParse(MaxPriceTextBox.Text, out decimal max))
+            {
                 maxPrice = max;
+            }
             else
+            {
                 maxPrice = decimal.MaxValue;
+            }
 
             ApplyFilters();
         }
@@ -136,11 +143,6 @@ namespace MobilePhoneStore.Pages
             if (NavigationService != null) NavigationService.Navigate(new AuthPage());
         }
 
-        private void Registration_Click(object sender, RoutedEventArgs e)
-        {
-            if (NavigationService != null) NavigationService.Navigate(new RegPage());
-        }
-
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Session.IsAuthorized || string.IsNullOrEmpty(Session.CurrentUserLogin))
@@ -158,11 +160,6 @@ namespace MobilePhoneStore.Pages
             }
 
             if (NavigationService != null) NavigationService.Navigate(new ProfilePage(currentUser));
-        }
-
-        private void AddToShopCartButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -25,7 +25,7 @@
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Профиль пользователя" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomTextBlock}" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <TextBlock Text="Профиль" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomTextBlock}" FontWeight="Bold" HorizontalAlignment="Center"/>
 
         <TextBlock Text="ФИО" Grid.Row="1" Grid.Column="0" Style="{StaticResource CustomTextBlock}" Width="300" HorizontalAlignment="Right"/>
         <TextBlock Text="Логин" Grid.Row="2" Grid.Column="0" Style="{StaticResource CustomTextBlock}" Width="300" HorizontalAlignment="Right"/>

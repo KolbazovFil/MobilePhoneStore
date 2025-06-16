@@ -17,6 +17,7 @@ namespace MobilePhoneStore
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            this.CartItems = new HashSet<CartItems>();
             this.Orders = new HashSet<Orders>();
         }
     
@@ -28,6 +29,8 @@ namespace MobilePhoneStore
         public string Password { get; set; }
         public int RoleID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartItems> CartItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
         public virtual Roles Roles { get; set; }

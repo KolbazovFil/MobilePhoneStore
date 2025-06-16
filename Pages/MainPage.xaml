@@ -21,10 +21,6 @@
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomMenu}">
             
-            <MenuItem Header="Навигация" Name="NavigationMenu" Style="{StaticResource CustomMenuItem}" Height="40">
-                <MenuItem Header="Регистрация" Name="Registration" Style="{StaticResource CustomMenuItem}" Click="Registration_Click"/>
-            </MenuItem>
-
             <MenuItem Header="Продукция" Name="Products" Style="{StaticResource CustomMenuItem}" Height="40">
 
                 <MenuItem Header="Вся продукция" Name="AllProducts" Style="{StaticResource CustomMenuItem}" Click="ProductAll_Click">
@@ -113,7 +109,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
             <Button Content="Войти" ToolTip="Нажмите чтобы перейти на страницу авторизации" Name="Authorization" Width="80" Height="40" Visibility="Visible" Style="{StaticResource CustomButtonStyle}" Click="Authorization_Click"/>
-            
+
             <StackPanel Name="ProfilePanel" Orientation="Horizontal" Visibility="Collapsed">
                 <Button Name="ProfileButton" Width="130" Height="40" Style="{StaticResource CustomButtonStyle}" Click="ProfileButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -122,16 +118,14 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-
-            <Button Content="Корзина" ToolTip="Нажмите чтобы перейти в корзину" Name="ShopCart" Width="90" Height="40" Style="{StaticResource CustomButtonStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock Text="Фильтры" Style="{StaticResource CustomTextBlock}" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
-            <TextBox Name="MinPriceTextBox" ToolTip="Введите минимальную цену для фильтрации" Style="{StaticResource CustomTextBox}" Width="200" FontSize="16" Height="30"/>
-            <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}" FontSize="16"/>
-            <TextBox Name="MaxPriceTextBox" ToolTip="Введите максимальную цену для фильтрации" Style="{StaticResource CustomTextBox}" Width="200" Height="30" FontSize="16"/>
+            <TextBlock Text="Минимальная цена" Style="{StaticResource CustomTextBlock}" />
+            <TextBox Name="MinPriceTextBox" ToolTip="Введите минимальную цену для фильтрации в формате 4000,00" Style="{StaticResource CustomTextBox}" Width="200" Height="30"/>
+            <TextBlock Text="Максимальная цена" Style="{StaticResource CustomTextBlock}"/>
+            <TextBox Name="MaxPriceTextBox" ToolTip="Введите максимальную цену для фильтрации в формате 4000,00" Style="{StaticResource CustomTextBox}" Width="200" Height="30"/>
             <Button Content="Применить фильтр" ToolTip="Нажмите для применения фильтрации" Style="{StaticResource CustomButtonStyle}" Width="190" Margin="0,10" Click="ApplyPriceFilterButton_Click"/>
         </StackPanel>
 
@@ -169,7 +163,6 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        <Button Name="AddToShopCart" ToolTip="Нажмите чтобы добавить продукт в корзину" Content="Добавить в корзину" Click="AddToShopCartButton_Click" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CustomEditButtonStyle}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

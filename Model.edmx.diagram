@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="448fdfb2055a431b84a117d6aa4b45b8" Name="Diagram1">
-        <EntityTypeShape EntityType="MobileStoreDBModel.Categories" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileStoreDBModel.Orders" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileStoreDBModel.Products" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileStoreDBModel.Roles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileStoreDBModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="aeb4ed4d780840abad86f781e567675d" Name="Diagram1">
+        <EntityTypeShape EntityType="MobileStoreDBModel.CartItems" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileStoreDBModel.Categories" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileStoreDBModel.Orders" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileStoreDBModel.Products" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileStoreDBModel.Roles" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileStoreDBModel.Users" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="MobileStoreDBModel.FK_CartItems_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MobileStoreDBModel.FK_CartItems_Users" ManuallyRouted="false" />
         <AssociationConnector Association="MobileStoreDBModel.FK_Products_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="MobileStoreDBModel.FK_Orders_Products" ManuallyRouted="false" />
         <AssociationConnector Association="MobileStoreDBModel.FK_Orders_Users" ManuallyRouted="false" />
