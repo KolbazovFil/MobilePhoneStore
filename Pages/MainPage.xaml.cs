@@ -5,7 +5,6 @@ using System.Windows.Controls;
 
 namespace MobilePhoneStore.Pages
 {
-    // Класс хранения состояния сессии
     public static class Session 
     {
         public static bool IsAuthorized { get; set; } = false;
@@ -25,14 +24,10 @@ namespace MobilePhoneStore.Pages
             currentCategory = null;
             LoadAllProducts();
         }
-
-        // Метод загрузки списка продуктов
         private void LoadAllProducts()
         {
             ListProducts.ItemsSource = Entities.GetContext().Products.ToList();
         }
-
-        // Метод обновления страницы
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             {
@@ -54,8 +49,6 @@ namespace MobilePhoneStore.Pages
                 }
             }
         }
-
-        // Метод применения текущих фильтров к списку продуктов
         private void ApplyFilters()
         {
             var products = Entities.GetContext().Products.AsQueryable();
@@ -77,8 +70,6 @@ namespace MobilePhoneStore.Pages
 
             ListProducts.ItemsSource = products.ToList();
         }
-
-        // Обработчик клика по элементу меню (Продукция)
         private void ProductFilter_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuItem menuItem && menuItem.Tag is string brand)
@@ -88,8 +79,6 @@ namespace MobilePhoneStore.Pages
                 ApplyFilters();
             }
         }
-
-        // Обработчик клика по элементу меню (Категории)
         private void CategoryFilter_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuItem menuItem && menuItem.Tag is string category)
@@ -99,8 +88,6 @@ namespace MobilePhoneStore.Pages
                 ApplyFilters();
             }
         }
-
-        // Обрабодчик применения фильтрации
         private void ApplyPriceFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MinPriceTextBox.Text) && decimal.TryParse(MinPriceTextBox.Text, out decimal min))
@@ -123,8 +110,6 @@ namespace MobilePhoneStore.Pages
 
             ApplyFilters();
         }
-
-        // Обработчик клика по элементу меню (Все)
         private void ProductAll_Click(object sender, RoutedEventArgs e)
         {
             currentBrand = null;
@@ -137,12 +122,10 @@ namespace MobilePhoneStore.Pages
 
             LoadAllProducts();
         }
-
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService != null) NavigationService.Navigate(new AuthPage());
         }
-
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Session.IsAuthorized || string.IsNullOrEmpty(Session.CurrentUserLogin))
@@ -160,6 +143,19 @@ namespace MobilePhoneStore.Pages
             }
 
             if (NavigationService != null) NavigationService.Navigate(new ProfilePage(currentUser));
+        }
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Session.IsAuthorized)
+            {
+                MessageBox.Show("Пожалуйста, войдите сначало в систему.", "Требуется авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            if (sender is Button btn && btn.DataContext is Products product)
+            {
+                MessageBox.Show($"Поздравляю, вы стали обладателем нового {product.ProductName}!");
+            }
         }
     }
 }

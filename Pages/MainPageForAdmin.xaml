@@ -168,7 +168,7 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        <Button Name="EditProduct" ToolTip="Нажмите чтобы Отредактировать продукт" Content="Редактирование" Click="EditProductButton_Click" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CustomEditButtonStyle}"/>
+                        <Button Name="EditProduct" ToolTip="Нажмите чтобы Отредактировать продукт" Content="Редактирование" Click="EditProductButton_Click" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource CustomBuyButtonStyle}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

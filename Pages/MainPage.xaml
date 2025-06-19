@@ -163,6 +163,7 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
+                        <Button Content="Купить" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource CustomBuyButtonStyle}" Click="BuyButton_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

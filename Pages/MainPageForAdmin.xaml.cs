@@ -29,7 +29,6 @@ namespace MobilePhoneStore.Pages
             LoadAllProducts();
         }
 
-        // Метод загрузки списка продуктов
         private void LoadAllProducts()
         {
             ListProducts.ItemsSource = Entities.GetContext().Products.ToList();
@@ -65,7 +64,6 @@ namespace MobilePhoneStore.Pages
             }
         }
 
-        // Метод обновления страницы
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             {
@@ -88,7 +86,6 @@ namespace MobilePhoneStore.Pages
             }
         }
 
-        // Метод применения текущих фильтров к списку продуктов
         private void ApplyFilters()
         {
             var products = Entities.GetContext().Products.AsQueryable();
@@ -112,7 +109,6 @@ namespace MobilePhoneStore.Pages
             ListProducts.ItemsSource = products.ToList();
         }
 
-        // Обработчик клика по элементу меню (Продукция)
         private void ProductFilter_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuItem menuItem && menuItem.Tag is string brand)
@@ -123,7 +119,6 @@ namespace MobilePhoneStore.Pages
             }
         }
 
-        // Обработчик клика по элементу меню (Категории)
         private void CategoryFilter_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuItem menuItem && menuItem.Tag is string category)
@@ -134,7 +129,6 @@ namespace MobilePhoneStore.Pages
             }
         }
 
-        // Обрабодчик применения фильтрации
         private void ApplyPriceFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(MinPriceTextBox.Text) && decimal.TryParse(MinPriceTextBox.Text, out decimal min))
@@ -158,7 +152,6 @@ namespace MobilePhoneStore.Pages
             ApplyFilters();
         }
 
-        // Обработчик клика по элементу меню (Все)
         private void ProductAll_Click(object sender, RoutedEventArgs e)
         {
             currentBrand = null;
