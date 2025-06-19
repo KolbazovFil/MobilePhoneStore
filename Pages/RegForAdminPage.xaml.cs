@@ -69,7 +69,7 @@ namespace MobilePhoneStore.Pages
                 db.Users.Add(userObject);
                 db.SaveChanges();
                 MessageBox.Show("Регистрация прошла успешно!");
-                if (NavigationService != null) NavigationService.Navigate(new AuthPage());
+                if (NavigationService != null) NavigationService.Navigate(new MainPageForAdmin());
                 Clear();
                 return true;
             }
